@@ -14,7 +14,7 @@ class ActivePost extends Component {
   }
 
   componentDidMount(){
-    axios.get(`/blogposts/post/${this.props.match.params.id}`)
+    axios.get(`https://mern-blog-app-api.herokuapp.com/blogposts/api/post/${this.props.match.params.id}`)
     .then( (res) => {
       return this.setState({currentPost: res.data.results});
     })
@@ -26,7 +26,11 @@ class ActivePost extends Component {
   handleDelete = (event) => {
     event.preventDefault();
     this.addHandleCreatePost.deletePost(this.props.match.params.id);
-    this.props.history.push('/');
+    try {
+      this.props.history.push('/');
+    } catch(e) {
+      alert(e);
+    }
   }
 
   render(){

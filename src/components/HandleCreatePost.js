@@ -5,7 +5,7 @@ import axios from 'axios';
 
 class HandleCreatePost {
   createPost(title,description,contents) {
-    axios.post('/blogposts/post' , { title , description, contents } )
+    axios.post('https://mern-blog-app-api.herokuapp.com/blogposts/api/post' , { title , description, contents } )
     .then( (res) => {
       console.log('add blog post: ', res.data.results);
     })
@@ -16,7 +16,7 @@ class HandleCreatePost {
   }
   // UPDATE function
   updatePost(title, description, contents , id) {
-    axios.patch(`/blogposts/post/${id}` , { title, description, contents } )
+    axios.patch(`https://mern-blog-app-api.herokuapp.com/blogposts/api/post/${id}` , { title, description, contents } )
     .then( (res) => {
       console.log('response', res.data.newResults);
         // return this.setState({ post: res.data })
@@ -27,7 +27,7 @@ class HandleCreatePost {
   }
   // DELETE function
   deletePost(id) {
-    axios.delete(`/blogposts/post/${id}`)
+    axios.delete(`https://mern-blog-app-api.herokuapp.com/blogposts/api/post/${id}`)
     .then( (res) => {
       console.log("deleted post:", res.data.results);
     }, (err) => console.log(err))
