@@ -32,6 +32,8 @@ class App extends Component {
           </div>
         );
       })
+    } else {
+      return <div className="no-posts">Loading...</div>
     }
   }
 
