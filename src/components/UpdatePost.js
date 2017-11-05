@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import HandleCreatePost from './HandleCreatePost';
+import HandlePostMethod from './HandlePostMethod';
 
 class UpdatePost extends Component {
   constructor(props){
@@ -12,7 +12,7 @@ class UpdatePost extends Component {
       contents: this.props.location.state.currentPost.contents
      };
     // creating a new instance of the handle create post function
-    this.addHandleCreatePost = new HandleCreatePost();
+    this.addHandlePostMethod = new HandlePostMethod();
     console.log(this.props.location.state.currentPost.description);
   }
 
@@ -28,7 +28,7 @@ class UpdatePost extends Component {
     event.preventDefault();
     // sending update function to the handle post class instance
     console.log(this.state.description);
-    this.addHandleCreatePost.updatePost(this.state.title,this.state.description,this.state.contents,this.props.match.params.id);
+    this.addHandlePostMethod.updatePost(this.state.title,this.state.description,this.state.contents,this.props.match.params.id);
     this.props.history.push('/');
   }
 

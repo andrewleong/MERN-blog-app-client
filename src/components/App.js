@@ -48,10 +48,10 @@ class App extends Component {
     return (
       <div className="app row">
         <div className="col-md-12">
-          <Link to="/create-post" style={{marginTop:"5%"}} className="float-right btn btn-outline-info waves-effect">Create Post</Link>
+          <Link to="/create-post" className="btn-create-post float-right btn btn-outline-info waves-effect">Create Post</Link>
         </div>
         <div className="col-md-12">
-          <div className="title">MERN-stack blogpost app</div>
+          <div className="title">MERN-stack blogging app</div>
           <div className="row"><div className="card-deck">{this.MapEachPost()}</div></div>
 
           {this.checkPostExist()}
@@ -60,13 +60,14 @@ class App extends Component {
     );
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.getAllPost();
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(prevState.posts === null){
       this.getAllPost();
+      console.log(prevState.posts);
     }
   }
 

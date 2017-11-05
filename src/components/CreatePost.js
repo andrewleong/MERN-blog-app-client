@@ -4,16 +4,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 // import local files
-import HandleCreatePost from './HandleCreatePost';
-
-
-// function validate(title, description) {
-//   // true means invalid, so our conditions got reversed
-//   return {
-//     title: title.length === 0,
-//     description: description.length === 0
-//   };
-// }
+import HandlePostMethod from './HandlePostMethod';
 
 class CreatePost extends Component {
   constructor(props){
@@ -21,7 +12,7 @@ class CreatePost extends Component {
 
     this.state = { title:'', description:'', contents:'', validationTitle: 'noError', validationDesc: 'noError', validationContents: 'noError'};
     // creating a new instance of the handle create post function
-    this.addHandleCreatePost = new HandleCreatePost();
+    this.addHandlePostMethod = new HandlePostMethod();
   };
 
   handleTyping = (event) => {
@@ -36,7 +27,7 @@ class CreatePost extends Component {
       event.preventDefault();
       return;
     }
-    this.addHandleCreatePost.createPost(this.state.title,this.state.description,this.state.contents);
+    this.addHandlePostMethod.createPost(this.state.title,this.state.description,this.state.contents);
     try {
       this.props.history.push('/');
     } catch(e) {

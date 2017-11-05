@@ -1,9 +1,9 @@
-// This Component Handles the Form Submit for CreatePost
+// This Component Handles the Form Submit for CRUD
 
 // import 3rd party modules
 import axios from 'axios';
 
-class HandleCreatePost {
+class HandlePostMethod {
   createPost(title,description,contents) {
     axios.post('https://mern-blog-app-api.herokuapp.com/blogposts/api/post' , { title , description, contents } )
     .then( (res) => {
@@ -30,9 +30,9 @@ class HandleCreatePost {
     axios.delete(`https://mern-blog-app-api.herokuapp.com/blogposts/api/post/${id}`)
     .then( (res) => {
       console.log("deleted post:", res.data.results);
-    }, (err) => console.log(err))
+    } )
     .catch(err => console.log(err))
   }
 };
 
-export default HandleCreatePost;
+export default HandlePostMethod;

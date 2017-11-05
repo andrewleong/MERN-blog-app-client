@@ -19,7 +19,7 @@ class EachPost extends Component {
                 <h4 className="card-title">{title}</h4>
                 <hr />
                 <p className="card-text">{description}</p>
-                <Link to= {`/post/${id}`} >View</Link>
+                <Link className="btn btn-raised btn-info" to= {`/post/${id}`} >View</Link>
             </div>
         </div>
       </div>

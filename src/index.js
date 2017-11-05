@@ -7,7 +7,6 @@ import App from './components/App';
 import CreatePost from './components/CreatePost';
 import ActivePost from './components/ActivePost';
 import UpdatePost from './components/UpdatePost';
-// import IndexPosts from './components/IndexPosts';
 
 ReactDOM.render(
   <BrowserRouter>

@@ -3,20 +3,20 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import FaAngleDoubleLeft from 'react-icons/lib/fa/angle-double-left';
 
-import HandleCreatePost from './HandleCreatePost';
+import HandlePostMethod from './HandlePostMethod';
 
 class ActivePost extends Component {
   constructor(props){
     super(props);
     this.state = {currentPost: ''};
 
-    this.addHandleCreatePost = new HandleCreatePost();
+    this.addHandlePostMethod = new HandlePostMethod();
   }
 
   componentDidMount(){
     axios.get(`https://mern-blog-app-api.herokuapp.com/blogposts/api/post/${this.props.match.params.id}`)
     .then( (res) => {
-      return this.setState({currentPost: res.data.results});
+      this.setState({currentPost: res.data.results});
     })
     .catch( (err) => {
       console.log('Problem fetching the url with id for update', err);
@@ -25,22 +25,16 @@ class ActivePost extends Component {
 
   handleDelete = (event) => {
     event.preventDefault();
-    this.addHandleCreatePost.deletePost(this.props.match.params.id);
-    try {
-      this.props.history.push('/');
-    } catch(e) {
-      alert(e);
-    }
+    this.addHandlePostMethod.deletePost(this.props.match.params.id);
+    this.props.history.push('/');
   }
 
   render(){
     const { id } = this.props.match.params;
-    console.log("Current Post", this.state.currentPost);
     const { title, description, contents } = this.state.currentPost;
     const { currentPost } = this.state;
-      if(currentPost === null){
-          this.props.history.push('/');
-      }
+
+
     return(
         <div className="col-md-8 mx-auto">
           <div className="form-wrapper">
